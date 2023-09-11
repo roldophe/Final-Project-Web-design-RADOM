@@ -1,32 +1,14 @@
 import React from 'react';
-import { StickyNavbar } from '../components/StickyNavbar';
-import { FooterWithSocialLinks } from '../components/FooterWithSocialLinks';
-import Jumbotron from '../components/Jumbotron';
-import Read from './read';
-import { Cards } from '../components/Card';
-import Trending from '../components/Trending';
-import Leaderboard from '../components/Leaderboard';
-import Video from '../components/Video';
-import ModalVideos from '../components/ModalVideos';
-import Model from '../components/Model';
-import CardII from '../components/CardII';
 import SliderPopulars from '../components/SliderPopulars';
 import SlideTrending from '../components/SlideTrending';
 import LatestTrailer from '../components/LatestTrailer';
+import Jumbotron from '../components/Jumbotron';
 
 const Home = () => {
     return (
         <>
             <main className='container mx-auto '>
                 <Jumbotron />
-                {/* <Trending/> */}
-                {/* <Video/> */}
-                {/* <Read /> */}
-                {/* <Cards/> */}
-                {/* <Leaderboard/> */}
-                {/*  <ModalVideos/> */}
-                {/* <Model/> */}
-                {/* <CardII/> */}
 
                 {/* Trending Section Start */}
                 <section>

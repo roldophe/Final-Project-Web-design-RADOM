@@ -29,12 +29,12 @@ const Read = () => {
 
     console.log('Fetching movie', movie);
     return (
-        <section className='container mx-auto p-2 md:p-10 m-5 antialiased bg-cover bg-center'
+        <section className='container mx-auto p-2 md:p-10 antialiased bg-cover bg-center'
             style={{
                 backgroundImage: `url(https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces${movie && movie.backdrop_path}`,
             }}
         >
-            <div class="min-h-full mt-10 grid place-items-center">
+            <div class="min-h-full mt-10 grid place-items-center ">
                 <div class="rounded-md shadow-lg">
                     <div class="md:flex px-4 leading-none max-w-full">
                         <div class="flex-none ">
@@ -49,15 +49,16 @@ const Read = () => {
 
                             <p class="pt-4 text-2xl font-bold">{`${movie && movie.title}(${movie && movie.release_date.substring(0, 4)})`}</p>
                             <hr class="hr-text" data-content="" />
-                            <div class="text-md flex justify-between px-4 my-2">
+                            <div class="text-md flex gap-5 px-4 my-2">
                                 <span class="font-bold">
-                                    {/* 2h 2min | Crime, Drama, Thriller */}
-                                    {/* {`${movie && Math.floor(movie.runtime / 60)}h ${movie && movie.runtime % 60} min | ${movie && movie.genres.name[0]}`} */}
-                                    {movie && `${Math.floor(movie.runtime / 60)}h ${movie.runtime % 60} min | ${allGenres}`}
+                                    {movie && `${movie && movie.release_date} (${movie && movie.production_countries[0].iso_3166_1})`}
+                                </span>
+                                <span class="font-bold">
+                                    {movie && `${Math.floor(movie.runtime / 60)}h ${movie.runtime % 60} min | ${allGenres} `}
                                 </span>
                                 <span class="font-bold"></span>
                             </div>
-                            <p class="hidden md:block px-4 my-4 text-sm text-left">
+                            <p class=" md:block px-4 my-4 text-sm text-left">
                                 {`${movie && movie.overview}`}
                             </p>
 

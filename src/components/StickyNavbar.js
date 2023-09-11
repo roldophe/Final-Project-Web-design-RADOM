@@ -18,18 +18,13 @@ import {
     InboxArrowDownIcon,
     LifebuoyIcon,
     PowerIcon,
-    Bars2Icon,
     FilmIcon,
     TvIcon,
     UsersIcon,
     EllipsisVerticalIcon,
-    PlusIcon,
-    ServerStackIcon,
-    MagnifyingGlassIcon,
     Bars3Icon,
-    Bars3BottomLeftIcon,
 } from "@heroicons/react/24/outline";
-
+import { useNavigate } from "react-router";
 // profile menu component
 const profileMenuItems = [
     {
@@ -58,6 +53,12 @@ function ProfileMenu() {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
     const closeMenu = () => setIsMenuOpen(false);
+    const navigate = useNavigate();
+
+    const handleItemClick = (route) => {
+        navigate(route);
+        setIsMenuOpen(false); // Close the menu after navigation
+    };
 
     return (
         <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
@@ -88,6 +89,8 @@ function ProfileMenu() {
 
                 {profileMenuItems.map(({ label, icon }, key) => {
                     const isLastItem = key === profileMenuItems.length - 1;
+                    const isFirstItem = key === 0;
+
                     return (
                         <MenuItem
                             key={label}
@@ -96,6 +99,7 @@ function ProfileMenu() {
                                 ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
                                 : ""
                                 }`}
+
                         >
                             {React.createElement(icon, {
                                 className: `h-4 w-4 ${isLastItem ? "text-red-500" : ""}`,
@@ -106,6 +110,7 @@ function ProfileMenu() {
                                 variant="small"
                                 className="font-normal"
                                 color={isLastItem ? "red" : "inherit"}
+                                key={label} onClick={() => handleItemClick(`/${label.toLowerCase()}`)}
                             >
                                 {label}
                             </Typography>
@@ -165,17 +170,22 @@ const navMoreItems = [
 ];
 function NavMoviesMenu() {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+    const navigate = useNavigate();
+
+    const handleItemClick = (route) => {
+        navigate(route);
+        setIsMenuOpen(false); // Close the menu after navigation
+    };
 
     const renderItems = navMovieMenuItems.map(({ title }) => (
-        <a href="#" key={title}>
+        <Typography key={title} onClick={() => handleItemClick(`/${title.toLowerCase()}`)}>
             <MenuItem>
                 <Typography variant="small" color="gray" className="font-normal">
                     {title}
                 </Typography>
             </MenuItem>
-        </a>
+        </Typography>
     ));
-
     return (
         <React.Fragment>
             <Menu allowHover open={isMenuOpen} handler={setIsMenuOpen}>
@@ -226,15 +236,20 @@ function NavMoviesMenu() {
 }
 function NavTvShowMenu() {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+    const navigate = useNavigate();
 
+    const handleItemClick = (route) => {
+        navigate(route);
+        setIsMenuOpen(false); // Close the menu after navigation
+    };
     const renderItems = navTvShowItems.map(({ title }) => (
-        <a href="#" key={title}>
+        <Typography key={title} onClick={() => handleItemClick(`/${title.toLowerCase()}`)}>
             <MenuItem>
                 <Typography variant="small" color="gray" className="font-normal">
                     {title}
                 </Typography>
             </MenuItem>
-        </a>
+        </Typography>
     ));
 
     return (
@@ -288,15 +303,20 @@ function NavTvShowMenu() {
 
 function NavPeopleMenu() {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+    const navigate = useNavigate();
 
+    const handleItemClick = (route) => {
+        navigate(route);
+        setIsMenuOpen(false); // Close the menu after navigation
+    };
     const renderItems = navPeopleItems.map(({ title }) => (
-        <a href="#" key={title}>
+        <Typography key={title} onClick={() => handleItemClick(`/${title.toLowerCase()}`)}>
             <MenuItem>
                 <Typography variant="small" color="gray" className="font-normal">
                     {title}
                 </Typography>
             </MenuItem>
-        </a>
+        </Typography>
     ));
 
     return (
@@ -349,15 +369,20 @@ function NavPeopleMenu() {
 }
 function NavMoreMenu() {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+    const navigate = useNavigate();
 
+    const handleItemClick = (route) => {
+        navigate(route);
+        setIsMenuOpen(false); // Close the menu after navigation
+    };
     const renderItems = navMoreItems.map(({ title }) => (
-        <a href="#" key={title}>
+        <Typography key={title} onClick={() => handleItemClick(`/${title.toLowerCase()}`)}>
             <MenuItem>
                 <Typography variant="small" color="gray" className="font-normal">
                     {title}
                 </Typography>
             </MenuItem>
-        </a>
+        </Typography>
     ));
 
     return (
@@ -428,26 +453,10 @@ const navListItems = [
 function NavList() {
     return (
         <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
-            {/*  <NavListMenu /> */}
             <NavMoviesMenu />
             <NavTvShowMenu />
             <NavPeopleMenu />
             <NavMoreMenu />
-            {/* {navListItems.map(({ label, icon }, key) => (
-                <Typography
-                    key={label}
-                    as="a"
-                    href="#"
-                    variant="small"
-                    color="gray"
-                    className="font-normal"
-                >
-                    <MenuItem className="flex items-center gap-2 lg:rounded-full">
-                        {React.createElement(icon, { className: "h-[18px] w-[18px]" })}{" "}
-                        {label}
-                    </MenuItem>
-                </Typography>
-            ))} */}
         </ul>
     );
 }
@@ -486,7 +495,7 @@ export function StickyNavbar() {
                         </IconButton>
                         <Typography
                             as="a"
-                            href="#"
+                            href="/"
                             className="cursor-pointer py-1.5 ml-2 lg:-ml-1 font-medium"
                         >
                             ISTAD MOVIE
