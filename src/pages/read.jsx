@@ -25,7 +25,7 @@ const Read = () => {
 
         fetchMovie();
     }, []);
-    const allGenres = movie.genres.map(genre => genre.name);
+    const allGenres = movie && movie.genres.map(genre => genre.name);
 
     console.log('Fetching movie', movie);
     return (
