@@ -1,9 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
+import Home from './pages/Home';
+import { StickyNavbar } from './components/StickyNavbar';
+import { FooterWithSocialLinks } from './components/FooterWithSocialLinks';
+import PopularMovies from './pages/PopularMovies';
+import Read from './pages/read';
 
 function App() {
   return (
-    <div className="App">
+    <>
+
+      {/* <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -18,7 +25,14 @@ function App() {
           Learn React
         </a>
       </header>
-    </div>
+    </div> */}
+
+      <StickyNavbar />
+      <Read/>
+      {/* <Home /> */}
+      {/* <PopularMovies/> */}
+      <FooterWithSocialLinks />
+    </>
   );
 }
 
