@@ -36,18 +36,18 @@ function App() {
         <Route path='/airing Today' element={<AiringToday />} />
         <Route path='/on tv' element={<OnTV />} />
 
-        <Route path='/popular people' element={<PopularPeople/>} />
+        <Route path='/popular people' element={<PopularPeople />} />
         <Route path='/sign in' element={<SignIn />} />
         <Route path='/sign out' element={<SignUp />} />
         <Route path='/discussions' element={<Discussion />} />
         <Route path='/support' element={<Support />} />
-        <Route path='/leaderboard' element={<LeaderBoard/>} />
+        <Route path='/leaderboard' element={<LeaderBoard />} />
         <Route path='/api' element={<API />} />
 
-        <Route path='/my profile' element={<MyProfile/>} />
-        <Route path='/edit profile' element={<Notfound/>} />
-        <Route path='/inbox' element={<Notfound/>} />
-        <Route path='/help' element={<Notfound/>} />
+        <Route path='/my profile' element={<MyProfile />} />
+        <Route path='/edit profile' element={<Notfound />} />
+        <Route path='/inbox' element={<Notfound />} />
+        <Route path='/help' element={<Notfound />} />
       </Routes>
 
       <FooterWithSocialLinks />

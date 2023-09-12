@@ -89,7 +89,6 @@ function ProfileMenu() {
 
                 {profileMenuItems.map(({ label, icon }, key) => {
                     const isLastItem = key === profileMenuItems.length - 1;
-                    const isFirstItem = key === 0;
 
                     return (
                         <MenuItem

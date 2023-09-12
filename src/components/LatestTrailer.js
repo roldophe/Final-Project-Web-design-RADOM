@@ -1,13 +1,67 @@
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
+import ReactModal from 'react-modal';
+import ModalVideo from 'react-modal-video';
+import YouTube from 'react-youtube';
 const LatestTrailer = () => {
+    const [TrialerMovie, setTrailerMovie] = useState(null);
+    useEffect(() => {
+        // Fetch the movie data
+        const fetchTrialerMovies = async () => {
+            try {
+                const response = await fetch('https://api.themoviedb.org/3/movie/76600/videos?api_key=4113f3ad734e747a5b463cde8c55de42&language=en-US');
+                const data = await response.json();
+                setTrailerMovie(data);
+            } catch (error) {
+                console.error("Error fetching movie data:", error);
+            }
+        };
+
+        fetchTrialerMovies();
+
+    }, []);
+    console.log("Trailer Movie:", TrialerMovie);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+
+    const handleOpenModal = () => {
+        setModalIsOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setModalIsOpen(false);
+    };
+
+    const opts = {
+        height: '100%',
+        width: '100%',
+        playerVars: {
+            autoplay: 1,
+        },
+    };
+
+    const customStyles = {
+        overlay: {
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            zIndex: 999,
+        },
+        content: {
+            top: "50%",
+            left: "50%",
+            right: "auto",
+            bottom: "auto",
+            marginRight: "-50%",
+            transform: "translate(-50%, -50%)",
+            border: "none",
+            borderRadius: "4px",
+            padding: 0,
+        },
+    };
     return (
         <>
             <div class="min-h-full mt-10 grid place-items-center" style={{
                 /* backgroundColor: "#0d1423", */
                 background: "linear-gradient(#2b4a62, #0d1423)"
             }}>
-                
+
                 <div class=" rounded-md shadow-lg">
                     <div class="md:flex px-4 leading-none max-w-full">
                         <div class="flex-none ">
@@ -20,13 +74,13 @@ const LatestTrailer = () => {
 
                         <div class="flex-col text-gray-300 text-center">
 
-                            <p class="pt-4 text-2xl font-bold">Joker (2020)</p>
+                            <p class="pt-4 text-2xl font-bold">{`${TrialerMovie && TrialerMovie.results[53].name}`}</p>
                             <hr class="hr-text" data-content="" />
                             <div class="text-md flex justify-between px-4 my-2">
                                 <span class="font-bold">2h 2min | Crime, Drama, Thriller</span>
                                 <span class="font-bold"></span>
                             </div>
-                            <p class="hidden md:block px-4 my-4 text-sm text-left">In Gotham City, mentally troubled comedian Arthur Fleck is disregarded and mistreated by society. He then embarks on a downward spiral of revolution and bloody crime. This path brings him face-to-face with his alter-ego: the Joker. </p>
+                            <p class="md:block px-4 my-4 text-sm text-left">In Gotham City, mentally troubled comedian Arthur Fleck is disregarded and mistreated by society. He then embarks on a downward spiral of revolution and bloody crime. This path brings him face-to-face with his alter-ego: the Joker. </p>
 
                             <p class="flex text-md px-4 my-2">
                                 Rating: 9.0/10
@@ -35,8 +89,30 @@ const LatestTrailer = () => {
                             </p>
 
                             <div class="text-xs">
-                                <button type="button" class="border border-gray-400 text-gray-400 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-gray-900 focus:outline-none focus:shadow-outline">TRAILER</button>
+                                {/* <button type="button" class="border border-gray-400 text-gray-400 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-gray-900 focus:outline-none focus:shadow-outline"
+                                >TRAILER</button>
+ */}
+                                <>
+                                    <button
+                                        type="button"
+                                        onClick={handleOpenModal}
+                                        className="border border-gray-400 text-gray-400 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-gray-900 focus:outline-none focus:shadow-outline"
+                                    >
+                                        TRAILER
+                                    </button>
 
+                                    <ModalVideo
+                                        isOpen={modalIsOpen}
+                                        onRequestClose={handleCloseModal}
+                                        contentLabel="Trailer Modal"
+                                        style={customStyles}
+                                    >
+                                        <div className="responsive-container">
+                                            <YouTube videoId="dQw4w9WgXcQ" opts={opts} />
+                                        </div>
+                                        <button onClick={handleCloseModal}>Close</button>
+                                    </ModalVideo>
+                                </>
                                 <button type="button" class="border border-gray-400 text-gray-400 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-gray-900 focus:outline-none focus:shadow-outline">IMDB</button>
 
                                 <button type="button" class="border border-gray-400 text-gray-400 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-gray-900 focus:outline-none focus:shadow-outline">AMAZON</button>

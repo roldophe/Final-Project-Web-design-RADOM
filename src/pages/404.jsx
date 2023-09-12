@@ -24,7 +24,7 @@ const Notfound = () => {
         prodRef.current?.play();
     }, []);
     return (
-        <div class="container mx-auto justify-center md:-mt-32">
+        <div class="container mx-auto justify-center">
             < Lottie
                 onComplete={handleAnimationComplete}
                 lottieRef={prodRef}

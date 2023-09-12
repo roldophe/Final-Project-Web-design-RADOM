@@ -32,7 +32,22 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.responsive-container {
+  overflow: hidden;
+  padding-top: 56.25%;
+  position: relative;
+}
+
+.responsive-container iframe {
+  border: none;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
