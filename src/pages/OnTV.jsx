@@ -48,21 +48,21 @@ const OnTV = () => {
     };
     return (
         <main className="container mx-auto mt-5">
-            <h2 className="flex flex-wrap pl-3 sm:pl-0 text-2xl font-bold text-white">
+            <h2 className="flex items-center justify-center text-2xl font-bold text-white">
                 On Tv
             </h2>
             <div class="flex items-center justify-center mt-3">
                 <div
-                    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xxl:grid-cols-6 gap-10"
+                    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xxl:grid-cols-6 sm:gap-5 gap-4 px-4 sm:px-0"
                 >
                     {movies &&
                         movies.map((movie, index) => (
-                            <div class="inline-block pl-3 sm:pl-0 " key={index}>
+                            <div class="inline-block justify-center items-center" key={index}>
                                 <div
-                                    class="w-52 items-center justify-center flex h-68 max-w-xs overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out"
+                                    class="overflow-hidden sm:rounded-lg rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
                                 >
                                     <img
-                                        class="w-52 h-68"
+                                        class="sm:w-auto w-full h-auto sm:h-full"
                                         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                                         alt="Colors"
                                     />
