@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import CardSlide from './Cards/CardSlide';
 
 const SliderPopulars = () => {
     const [movies, setMovie] = useState(null);
@@ -27,24 +28,16 @@ const SliderPopulars = () => {
                     class="flex flex-nowrap"
                 >
                     {
-                        movies && movies.results.map((movie, index) => (
+                        movies && movies.results.map((movie) => (
                             <div class="inline-block pl-3">
-                                <Link to={`/read/${movie.id}`}>
-                                    <div key={index}
-                                        class="w-48 h-64 max-w-xs overflow-hidden rounded-lg shadow-mdhover:shadow-xl transition-shadow duration-300 ease-in-out"
-                                    >
-                                        <img
-                                            class="w-48 h-64" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                                            alt="Colors"
-                                        />
-                                    </div>
-                                    <h6 class="mt-4 text-gray-300 font-bold cursor-pointer px-3 text-lg">{movie.title}</h6>
-                                    <div class="px-3">
-                                        <div class="flex space-x-1 items-center">
-                                            <p className='text-gray-600 text-xl md:text-xl'>{movie.release_date}</p>
-                                        </div>
-                                    </div>
-                                </Link>
+                                <NavLink to={`/read/${movie.id}`}>
+                                    
+                                    <CardSlide 
+                                        poster_path={movie.poster_path}
+                                        title={movie.title}
+                                        release_date={movie.release_date}
+                                    />
+                                </NavLink>
 
                             </div>
                         ))

@@ -47,7 +47,7 @@ code {
 
 .hr-text:before {
   content: "";
-  background: linear-gradient(to right, transparent, #818078, transparent);
+  background: linear-gradient(to right, transparent, #ffffff, transparent);
   position: absolute;
   left: 0;
   top: 50%;
