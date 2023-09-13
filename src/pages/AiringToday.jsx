@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const AiringToday = () => {
     const [movies, setMovies] = useState([]);
@@ -55,9 +56,9 @@ const AiringToday = () => {
                 <div
                     class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xxl:grid-cols-6 sm:gap-5 gap-4 px-4 sm:px-0"
                 >
-                    {movies &&
-                        movies.map((movie, index) => (
-                            <div class="inline-block justify-center items-center" key={index}>
+                    {movies && movies.map((movie, index) => (
+                        <div class="inline-block justify-center items-center" key={index}>
+                            <Link to={`/read/${movie.id}`}>
                                 <div
                                     class="overflow-hidden sm:rounded-lg rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
                                 >
@@ -73,12 +74,14 @@ const AiringToday = () => {
                                 <div class="px-3">
                                     <div class="flex space-x-1 items-center">
                                         <p className="text-gray-600 text-xl md:text-xl">
-                                            {movie.release_date ||movie.first_air_date}
+                                            {movie.release_date || movie.first_air_date}
                                         </p>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
+                            </Link>
+
+                        </div>
+                    ))}
                 </div>
             </div>
 

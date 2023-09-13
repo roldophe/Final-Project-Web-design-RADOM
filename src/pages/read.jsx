@@ -1,21 +1,27 @@
 import { Button, Dialog, DialogBody, DialogFooter, DialogHeader, Rating, Tooltip, Typography } from '@material-tailwind/react';
 import React, { useEffect, useState } from 'react';
 import Video from '../components/Video';
+import { useParams } from 'react-router';
 
 const Read = () => {
-    const [movie, setMovie] = useState(null);
-    const [rated, setRated] = useState(null);
-    const [open, setOpen] = useState(false);
 
+    let { id } = useParams(null);
+    //Mark create a state to store the movie object
+    //set defaults value for state for handle show date load
+    const [movie, setMovie] = useState(null);
+
+
+    const [open, setOpen] = useState(false);
+    const [rated, setRated] = useState(null);
     const handleOpen = () => {
         setOpen(!open);
     };
 
     useEffect(() => {
         // Fetch the movie data
-        const fetchMovie = async () => {
+        const fetchMovie = async (id) => {
             try {
-                const response = await fetch('https://api.themoviedb.org/3/movie/76600?api_key=4113f3ad734e747a5b463cde8c55de42&language=en-US');
+                const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=4113f3ad734e747a5b463cde8c55de42&language=en-US`);
                 const data = await response.json();
                 setMovie(data);
             } catch (error) {
@@ -23,7 +29,7 @@ const Read = () => {
             }
         };
 
-        fetchMovie();
+        fetchMovie(id);
     }, []);
     const allGenres = movie && movie.genres.map(genre => genre.name);
 
@@ -51,10 +57,10 @@ const Read = () => {
                             <hr class="hr-text" data-content="" />
                             <div class="text-md flex gap-5 px-4 my-2">
                                 <span class="font-bold">
-                                    {movie && `${movie && movie.release_date} (${movie && movie.production_countries[0].iso_3166_1})`}
+                                    {movie && `${movie && movie.release_date} (${movie?.production_countries[0]?.iso_3166_1 ?? 'null'})`}
                                 </span>
                                 <span class="font-bold">
-                                    {movie && `${Math.floor(movie.runtime / 60)}h ${movie.runtime % 60} min | ${allGenres} `}
+                                    {movie && `${Math.floor(movie.runtime / 60)}h ${movie.runtime % 60} min | ${allGenres}`}
                                 </span>
                                 <span class="font-bold"></span>
                             </div>

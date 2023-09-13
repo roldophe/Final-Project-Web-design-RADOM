@@ -46,6 +46,7 @@ function App() {
 
         <Route path='/my profile' element={<MyProfile />} />
         <Route path='/edit profile' element={<Notfound />} />
+        <Route path='/help' element={<Notfound />} />
         <Route path='/inbox' element={<Notfound />} />
         <Route path='/help' element={<Notfound />} />
       </Routes>
