@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import CardMovie from '../components/Cards/CardMovie';
 
 const Upcoming = () => {
     const [movies, setMovies] = useState([]);
@@ -61,25 +62,11 @@ const Upcoming = () => {
 
                                 <div class="inline-block justify-center items-center" key={index}>
                                     <Link to={`/read/${movie.id}`}>
-                                        <div
-                                            class="overflow-hidden sm:rounded-lg rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
-                                        >
-                                            <img
-                                                class="sm:w-auto w-full h-auto sm:h-full"
-                                                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                                                alt="Colors"
-                                            />
-                                        </div>
-                                        <h6 class="mt-4 text-gray-300 font-bold cursor-pointer px-3 text-lg">
-                                            {movie.title}
-                                        </h6>
-                                        <div class="px-3">
-                                            <div class="flex space-x-1 items-center">
-                                                <p className="text-gray-600 text-xl md:text-xl">
-                                                    {movie.release_date}
-                                                </p>
-                                            </div>
-                                        </div>
+                                    <CardMovie
+                                        poster_path={movie.poster_path}
+                                        title={movie.title}
+                                        release_date={movie.release_date}
+                                    />
                                     </Link>
 
                                 </div>

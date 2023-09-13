@@ -1,30 +1,31 @@
 import React, { useEffect, useState } from 'react';
+import CardPeople from '../components/Cards/CardPeople';
 
 const PopularPeople = () => {
-    const [person, setperson] = useState([]);
+    const [people, setpeople] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
 
     useEffect(() => {
         // Fetch the movie data
-        const fetchperson = async () => {
+        const fetchpeople = async () => {
             try {
                 const response = await fetch(
                     `https://api.themoviedb.org/3/person/popular?api_key=4113f3ad734e747a5b463cde8c55de42&language=en-US&page=${currentPage}`
                 );
                 const data = await response.json();
-                setperson((prevperson) => [...prevperson, ...data.results]);
+                setpeople((prevpeople) => [...prevpeople, ...data.results]);
                 setTotalPages(data.total_pages);
             } catch (error) {
                 console.error("Error fetching movie data:", error);
             }
         };
         if (currentPage === 1) {
-            setperson([]);
+            setpeople([]);
         }
-        fetchperson();
+        fetchpeople();
     }, [currentPage]);
-    console.log("Person", person);
+    console.log("people", people);
     const handleScroll = () => {
         if (
             window.innerHeight + document.documentElement.scrollTop ===
@@ -35,7 +36,7 @@ const PopularPeople = () => {
             }
         }
     };
-    //const overviews = person && person.results.known_for.map(o => o.overview);
+    //const overviews = people && people.results.known_for.map(o => o.overview);
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);
         return () => {
@@ -46,20 +47,21 @@ const PopularPeople = () => {
     const handleViewMore = () => {
         setCurrentPage((prevPage) => prevPage + 1);
     };
-    /* const allOverviews = person && person.results[0].known_for.map(item => item.overview); */
-    //const allOverviews = person && person.results && person.results[0] && person.results[0].known_for.map(item => item.overview);
+    /* const allOverviews = people && people.results[0].known_for.map(item => item.overview); */
+    //const allOverviews = people && people.results && people.results[0] && people.results[0].known_for.map(item => item.overview);
     return (
         <main className="container mx-auto mt-5">
             <h2 className="flex items-center justify-center text-2xl font-bold text-white">
-                Airing Today
+                Popular People
             </h2>
             <div class="flex items-center justify-center mt-3">
                 <div
                     class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 xxl:grid-cols-8 sm:gap-5 gap-4 px-4 sm:px-0"
                 >
-                    {person &&
-                        person.map((movie, index) => (
+                    {people &&
+                        people.map((person, index) => (
                             <div class="inline-block justify-center items-center" key={index}>
+                                {/*
                                 <div
                                     class="overflow-hidden sm:rounded-lg rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
                                 >
@@ -75,11 +77,16 @@ const PopularPeople = () => {
                                 <div class="px-3">
                                     <div class="flex space-x-1 items-center">
                                         <p className="text-gray-600 text-xl md:text-xl">
-                                            {/* {allOverviews[index]} */}
+                                             {allOverviews[index]} 
                                         </p>
                                     </div>
-                                </div>
+                                </div> */}
+                                <CardPeople
+                                    profile_path={person.profile_path}
+                                    title={person.title || person.name}
+                                />
                             </div>
+
                         ))}
                 </div>
             </div>
