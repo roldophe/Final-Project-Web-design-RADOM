@@ -30,14 +30,14 @@ const SliderPopulars = () => {
                     {
                         movies && movies.results.map((movie) => (
                             <div class="inline-block pl-3">
-                                <NavLink to={`/read/${movie.id}`}>
+                                <a href={`/read/${movie.id}`} a>
                                     
                                     <CardSlide 
                                         poster_path={movie.poster_path}
                                         title={movie.title}
                                         release_date={movie.release_date}
                                     />
-                                </NavLink>
+                                </a>
 
                             </div>
                         ))

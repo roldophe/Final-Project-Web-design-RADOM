@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import CardPeople from '../components/Cards/CardPeople';
+import { Link } from 'react-router-dom';
 
 const PopularPeople = () => {
     const [people, setpeople] = useState([]);
@@ -61,30 +62,13 @@ const PopularPeople = () => {
                     {people &&
                         people.map((person, index) => (
                             <div class="inline-block justify-center items-center" key={index}>
-                                {/*
-                                <div
-                                    class="overflow-hidden sm:rounded-lg rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
-                                >
-                                    <img
-                                        class="sm:w-auto w-full h-auto sm:h-full"
-                                        src={`https://image.tmdb.org/t/p/w500${movie.profile_path}`}
-                                        alt="Colors"
+                                <Link to={`/detail_people/${person.id}`}>
+                                    <CardPeople
+                                        profile_path={person.profile_path}
+                                        title={person.title || person.name}
                                     />
-                                </div>
-                                <h6 class="mt-4 text-gray-300 font-bold cursor-pointer px-3 text-lg">
-                                    {movie.title || movie.name}
-                                </h6>
-                                <div class="px-3">
-                                    <div class="flex space-x-1 items-center">
-                                        <p className="text-gray-600 text-xl md:text-xl">
-                                             {allOverviews[index]} 
-                                        </p>
-                                    </div>
-                                </div> */}
-                                <CardPeople
-                                    profile_path={person.profile_path}
-                                    title={person.title || person.name}
-                                />
+                                </Link>
+
                             </div>
 
                         ))}

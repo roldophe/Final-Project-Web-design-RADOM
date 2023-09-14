@@ -19,6 +19,7 @@ import LeaderBoard from './pages/LeaderBoard';
 import MyProfile from './pages/MyProfile';
 import PopularPeople from './pages/PopularPeople';
 import Notfound from './pages/404';
+import DetialPeople from './pages/DetialPeople';
 
 function App() {
   return (
@@ -49,6 +50,8 @@ function App() {
         <Route path='/help' element={<Notfound />} />
         <Route path='/inbox' element={<Notfound />} />
         <Route path='/help' element={<Notfound />} />
+
+        <Route path='/detail_people/:id' element={<DetialPeople />} />
       </Routes>
 
       <FooterWithSocialLinks />

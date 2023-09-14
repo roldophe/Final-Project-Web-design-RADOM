@@ -10,9 +10,17 @@ const Read = () => {
     let { id } = useParams(null);
     //Mark create a state to store the movie object
     //set defaults value for state for handle show date load
-    const [movie, setMovie] = useState(null);
+    const movieData = {
+        title: 'Unknown',
+        release_date: 'Unknown',
+        poster_path: '',
+        production_countries: [{ iso_3166_1: 'Unknown' }],
+        runtime: 0,
+        overview: 'No overview available',
+        vote_average: 0,
+    };
 
-
+    const [movie, setMovie] = useState(movieData);
     const [open, setOpen] = useState(false);
     const [rated, setRated] = useState(null);
     const handleOpen = () => {
@@ -33,8 +41,7 @@ const Read = () => {
 
         fetchMovie(id);
     }, []);
-    const allGenres = movie && movie.genres.map(genre => genre.name);
-
+    const allGenres = movie.genres ? movie.genres.map(genre => genre.name) : [];
     console.log('Fetching movie', movie);
     return (
         <main>
@@ -49,33 +56,35 @@ const Read = () => {
                 <div class="min-h-full mt-10 grid place-items-center transform">
                     <div class="rounded-md shadow-xl">
                         <div class="md:flex px-4 leading-none max-w-full">
-                            <div class="flex-none ">
+                            <div class="flex-none">
                                 <img
-                                    src={`https://image.tmdb.org/t/p/w500${movie && movie.poster_path}`}
-                                    alt={movie && movie.title}
-                                    class="h-78 w-56 rounded-md shadow-2xl transform -translate-y-4 border-4 border-gray-300 "
+                                    src={`https://image.tmdb.org/t/p/w500${movie?.poster_path || ''}`}
+                                    alt={movie?.title || 'Unknown'}
+                                    class="h-78 w-56 rounded-md shadow-2xl transform -translate-y-4 border-4 border-gray-300"
                                 />
                             </div>
 
                             <div class="flex-col text-gray-300 text-center">
-
-                                <p class="pt-4 text-2xl font-bold text-white">{`${movie && movie.title}(${movie && movie.release_date.substring(0, 4)})`}</p>
+                                <p class="pt-4 text-2xl font-bold text-white">
+                                    {movie.title} ({movie.release_date?.substring(0, 4) || 'Unknown'})
+                                </p>
                                 <hr class="hr-text" data-content="" />
                                 <div class="text-md flex gap-5 px-4 my-2">
                                     <span class="font-bold">
-                                        {movie && `${movie && movie.release_date} (${movie?.production_countries[0]?.iso_3166_1 ?? 'null'})`}
+                                        {movie.release_date && movie.production_countries?.[0]?.iso_3166_1
+                                            ? `${movie.release_date} (${movie.production_countries[0].iso_3166_1})`
+                                            : 'Unknown'}
                                     </span>
                                     <span class="font-bold">
-                                        {movie && `${Math.floor(movie.runtime / 60)}h ${movie.runtime % 60} min | ${allGenres}`}
+                                        {`${Math.floor(movie.runtime / 60 || 0)}h ${movie.runtime % 60 || 0} min | ${allGenres || ''}`}
                                     </span>
-                                    <span class="font-bold"></span>
                                 </div>
-                                <p class=" md:block px-4 my-4 text-sm text-left">
-                                    {`${movie && movie.overview}`}
+                                <p class="md:block px-4 my-4 text-sm text-left">
+                                    {movie.overview || 'No overview available'}
                                 </p>
 
                                 <p class="flex text-md px-4 my-2">
-                                    Rating: {`${(movie && movie.vote_average.toFixed(1)) || 'N/A'}/10`}
+                                    Rating: {movie.vote_average ? movie.vote_average.toFixed(1) : 'N/A'}/10
                                     <span class="font-bold px-2">|</span>
                                     Mood: Dark
                                 </p>
@@ -87,7 +96,6 @@ const Read = () => {
 
                                     <button type="button" class="border border-gray-100 text-gray-100 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-gray-900 focus:outline-none focus:shadow-outline">AMAZON</button>
                                 </div>
-                                {/*             <p>ICON BTNS</p> ​*/}
                             </div>
                         </div>
                         <div class="flex justify-between items-center px-4 mb-4 w-full">

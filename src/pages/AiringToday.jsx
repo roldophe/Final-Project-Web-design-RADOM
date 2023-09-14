@@ -62,8 +62,8 @@ const AiringToday = () => {
                             <Link to={`/read/${movie.id}`}>
                             <CardMovie
                                         poster_path={movie.poster_path}
-                                        title={movie.title}
-                                        release_date={movie.release_date}
+                                        title={movie.title || movie.name}
+                                        release_date={movie.release_date || movie.first_air_date}
                                     />
                             </Link>
 

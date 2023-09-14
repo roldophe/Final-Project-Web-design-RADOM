@@ -27,16 +27,15 @@ const SlideTrending = () => {
                     class="flex flex-nowrap"
                 >
                     {
-
                         movies && movies.results.map((movie, index) => (
                             <div class="inline-block pl-3">
-                                <Link to={`/read/${movie.id}`}>
+                                <a href={`/read/${movie.id}`}>
                                     <div key={index}
                                         class="w-48 h-64 max-w-xs overflow-hidden rounded-lg shadow-md  hover:shadow-xl transition-shadow duration-300 ease-in-out"
                                     /* style={{ backgroundColor: "#0d1423" }} */
                                     >
                                         <img
-                                            class="w-48 h-64" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                                            class="w-48 h-64" src={`https://image.tmdb.org/t/p/w500${movie && movie.poster_path}`}
                                             alt="Colors"
                                         />
                                     </div>
@@ -48,13 +47,13 @@ const SlideTrending = () => {
                                             </span>
                                         </Tooltip>
                                     </div>
-                                    <h6 class="mt-5 text-gray-100 font-bold cursor-pointer px-3 text-lg">{movie.original_name || movie.original_title}</h6>
+                                    <h6 class="mt-5 text-gray-100 font-bold cursor-pointer px-3 text-lg">{movie && movie.original_name || movie.original_title}</h6>
                                     <div class="px-3">
                                         <div class="flex space-x-1 items-center">
-                                            <p className='text-gray-300 text-xl md:text-xl'>{movie.first_air_date || movie.release_date}</p>
+                                            <p className='text-gray-300 text-xl md:text-xl'>{movie &&  movie.first_air_date || movie.release_date}</p>
                                         </div>
                                     </div>
-                                </Link>
+                                </a>
 
                             </div>
                         ))
