@@ -1,4 +1,5 @@
 import React from 'react';
+import { BaseUrl_Img } from '../../utilities/API/BaseImage';
 
 const CardMovie = (props) => {
   return (
@@ -8,7 +9,7 @@ const CardMovie = (props) => {
       >
         <img
           class="sm:w-auto w-full h-auto sm:h-full "
-          src={`https://image.tmdb.org/t/p/w500${props.poster_path}`}
+          src={`${BaseUrl_Img}${props.poster_path}`}
           alt="Colors"
         />
       </div>

@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { Typography } from "@material-tailwind/react";
+import { Base_Url } from '../utilities/API/BaseURl';
+import { api_key } from '../utilities/API/Key';
+import { BaseUrl_Img } from '../utilities/API/BaseImage';
 const DetailPeople = () => {
     let { id } = useParams(null);
     const [person, setperson] = useState(null);
@@ -8,7 +11,7 @@ const DetailPeople = () => {
         // Fetch the movie data
         const fetchperson = async (id) => {
             try {
-                const response = await fetch(`https://api.themoviedb.org/3/person/${id}?api_key=4113f3ad734e747a5b463cde8c55de42&language=en- US`);
+                const response = await fetch(`${Base_Url}/person/${id}?api_key=${api_key}&language=en- US`);
                 const data = await response.json();
                 setperson(data);
             } catch (error) {
@@ -30,7 +33,7 @@ const DetailPeople = () => {
                     <div class="md:flex md:px-0 px-4 leading-none max-w-full">
                         <div class="md:flex-none flex justify-center">
                             <img
-                                src={`https://image.tmdb.org/t/p/w500${person && person.profile_path}`}
+                                src={`${BaseUrl_Img}${person && person.profile_path}`}
                                 alt="pic"
                                 class="h-72 w-56 rounded-md shadow-2xl transform -translate-y-4 border-4 border-gray-300 "
                             />

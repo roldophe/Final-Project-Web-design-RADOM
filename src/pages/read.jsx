@@ -5,6 +5,9 @@ import { useParams } from 'react-router';
 import SliderPopulars from '../components/SliderPopulars';
 import { Link } from 'react-router-dom';
 import Trailer from '../components/Buttoms/Trailer';
+import { Base_Url } from '../utilities/API/BaseURl';
+import { api_key } from '../utilities/API/Key';
+import { BaseUrl_Img } from '../utilities/API/BaseImage';
 
 const Read = () => {
 
@@ -32,7 +35,7 @@ const Read = () => {
         // Fetch the movie data
         const fetchMovie = async (id) => {
             try {
-                const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=4113f3ad734e747a5b463cde8c55de42&language=en-US`);
+                const response = await fetch(`${Base_Url}/movie/${id}?api_key=${api_key}&language=en-US`);
                 const data = await response.json();
                 setMovie(data);
             } catch (error) {
@@ -59,7 +62,7 @@ const Read = () => {
                         <div class="md:flex px-4 leading-none max-w-full">
                             <div class="flex-none">
                                 <img
-                                    src={`https://image.tmdb.org/t/p/w500${movie?.poster_path || ''}`}
+                                    src={`${BaseUrl_Img}${movie?.poster_path || ''}`}
                                     alt={movie?.title || 'Unknown'}
                                     class="h-78 w-56 rounded-md shadow-2xl transform -translate-y-4 border-4 border-gray-300"
                                 />

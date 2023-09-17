@@ -1,4 +1,5 @@
 import React from 'react';
+import { BaseUrl_Img } from '../../utilities/API/BaseImage';
 
 const CardPeople = (person) => {
     return (
@@ -8,7 +9,7 @@ const CardPeople = (person) => {
             >
                 <img
                     class="sm:w-auto w-full h-auto sm:h-full"
-                    src={`https://image.tmdb.org/t/p/w500${person.profile_path}`}
+                    src={`${BaseUrl_Img}${person.profile_path}`}
                     alt="Colors"
                 />
             </div>

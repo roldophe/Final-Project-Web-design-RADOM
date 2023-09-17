@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import CardPeople from '../components/Cards/CardPeople';
 import { Link } from 'react-router-dom';
+import { Base_Url } from '../utilities/API/BaseURl';
+import { api_key } from '../utilities/API/Key';
 
 const PopularPeople = () => {
     const [people, setpeople] = useState([]);
@@ -12,7 +14,7 @@ const PopularPeople = () => {
         const fetchpeople = async () => {
             try {
                 const response = await fetch(
-                    `https://api.themoviedb.org/3/person/popular?api_key=4113f3ad734e747a5b463cde8c55de42&language=en-US&page=${currentPage}`
+                    `${Base_Url}/person/popular?api_key=${api_key}&language=en-US&page=${currentPage}`
                 );
                 const data = await response.json();
                 setpeople((prevpeople) => [...prevpeople, ...data.results]);

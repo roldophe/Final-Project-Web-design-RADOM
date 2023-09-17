@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import CardMovie from '../components/Cards/CardMovie';
+import { Base_Url } from '../utilities/API/BaseURl';
+import { api_key } from '../utilities/API/Key';
 
 const TopRated = () => {
     const [movies, setMovies] = useState([]);
@@ -12,7 +14,7 @@ const TopRated = () => {
         const fetchMovies = async () => {
             try {
                 const response = await fetch(
-                    `https://api.themoviedb.org/3/movie/top_rated?api_key=4113f3ad734e747a5b463cde8c55de42&language=en-US&page=${currentPage}`
+                    `${Base_Url}/movie/top_rated?api_key=${api_key}&language=en-US&page=${currentPage}`
                 );
                 const data = await response.json();
                 setMovies((prevMovies) => [...prevMovies, ...data.results]);

@@ -1,6 +1,9 @@
 import { Tooltip } from '@material-tailwind/react';
 import React, { useEffect, useState } from 'react';
 import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
+import { BaseUrl_Img } from '../utilities/API/BaseImage';
+import { api_key } from '../utilities/API/Key';
+import { Base_Url } from '../utilities/API/BaseURl';
 
 const SlideTrending = () => {
     const [movies, setMovies] = useState(null);
@@ -9,7 +12,7 @@ const SlideTrending = () => {
         // Fetch the movie data
         const fetchMovies = async () => {
             try {
-                const response = await fetch('https://api.themoviedb.org/3/trending/all/day?api_key=55e57522394c7587c74602a3fe614134&language=en-US&page=1');
+                const response = await fetch(`${Base_Url}/trending/all/day?api_key=${api_key}&language=en-US&page=1`);
                 const data = await response.json();
                 setMovies(data);
             } catch (error) {
@@ -53,7 +56,7 @@ const SlideTrending = () => {
                                         class="w-48 h-64 max-w-xs overflow-hidden rounded-lg shadow-md  hover:shadow-xl transition-shadow duration-300 ease-in-out"
                                     >
                                         <img
-                                            class="w-48 h-64" src={`https://image.tmdb.org/t/p/w500${movie && movie.poster_path}`}
+                                            class="w-48 h-64" src={`${BaseUrl_Img}${movie && movie.poster_path}`}
                                             alt="Colors"
                                         />
                                     </div>
