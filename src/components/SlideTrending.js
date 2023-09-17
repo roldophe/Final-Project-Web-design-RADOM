@@ -26,11 +26,11 @@ const SlideTrending = () => {
         const stars = [];
 
         for (let i = 0; i < fullStars; i++) {
-            stars.push(<FaStar key={i} className="text-blue-400" />);
+            stars.push(<FaStar key={i} className="text-yellow-400" />);
         }
 
         if (hasHalfStar) {
-            stars.push(<FaStarHalfAlt key={fullStars} className="text-blue-400" />);
+            stars.push(<FaStarHalfAlt key={fullStars} className="text-yellow-400" />);
         }
 
         return stars;
@@ -47,7 +47,7 @@ const SlideTrending = () => {
                 >
                     {
                         movies && movies.results.map((movie, index) => (
-                            <div class="inline-block pl-3 hover:-mt-5 hover:scale-125 duration-100 hover:-translate-4 hover:z-auto">
+                            <div class="inline-block pl-3 hover:mt-5 hover:scale-105 duration-100 hover:translate-4 hover:z-auto">
                                 <a href={`/read/${movie.id}`}>
                                     <div key={index}
                                         class="w-48 h-64 max-w-xs overflow-hidden rounded-lg shadow-md  hover:shadow-xl transition-shadow duration-300 ease-in-out"

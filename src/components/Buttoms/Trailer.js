@@ -5,7 +5,7 @@ import { useParams } from 'react-router';
 const Trailer = () => {
     const [TrailerMovie, setTrailerMovie] = useState(null);
     const [modalIsOpen, setModalIsOpen] = useState(false);
-    let { id } = useParams(null);
+    let {id} =useParams(null);
     useEffect(() => {
         const fetchTrailerMovies = async () => {
             try {
@@ -30,7 +30,7 @@ const Trailer = () => {
         setModalIsOpen(false);
     };
     return (
-        <>
+        <><div>
             {TrailerMovie && TrailerMovie.results.length > 0 && (
                 <ModalVideo
                     channel="youtube"
@@ -41,6 +41,7 @@ const Trailer = () => {
                     classNames="w-fullscreen"
                 />
             )}
+        </div>
             <button
                 type="button"
                 onClick={handleOpenModal}
