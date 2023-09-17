@@ -4,6 +4,7 @@ import Video from '../components/Video';
 import { useParams } from 'react-router';
 import SliderPopulars from '../components/SliderPopulars';
 import { Link } from 'react-router-dom';
+import Trailer from '../components/Buttoms/Trailer';
 
 const Read = () => {
 
@@ -90,8 +91,7 @@ const Read = () => {
                                 </p>
 
                                 <div class="text-xs">
-                                    <button type="button" class="border border-gray-100 text-gray-100 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-gray-900 focus:outline-none focus:shadow-outline">TRAILER</button>
-
+                                    <Trailer/>
                                     <button type="button" class="border border-gray-100 text-gray-100 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-gray-900 focus:outline-none focus:shadow-outline">IMDB</button>
 
                                     <button type="button" class="border border-gray-100 text-gray-100 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-gray-900 focus:outline-none focus:shadow-outline">AMAZON</button>

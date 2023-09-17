@@ -20,16 +20,16 @@ const SliderPopulars = () => {
         fetchMovie();
     }, []);
     return (
-        <div class="flex flex-col m-auto p-auto mt-3 bg-[url()]">
+        <div class="flex flex-col m-auto p-auto mt-3">
             <div
-                class="flex overflow-x-scroll pb-10 hide-scroll-bar  px-3"
+                class="flex overflow-x-scroll pb-10 hide-scroll-bar px-3"
             >
                 <div
                     class="flex flex-nowrap"
                 >
                     {
                         movies && movies.results.map((movie) => (
-                            <div class="inline-block pl-3">
+                            <div class="inline-block pl-3 hover:scale-105 duration-75 hover:-translate-10 hover:z-999 hover:inset-0">
                                 <a href={`/read/${movie.id}`} a>
                                     
                                     <CardSlide 
