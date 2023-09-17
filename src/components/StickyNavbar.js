@@ -44,7 +44,7 @@ const profileMenuItems = [
         icon: LifebuoyIcon,
     },
     {
-        label: "Sign Out",
+        label: "Sign In",
         icon: PowerIcon,
     },
 ];
@@ -504,40 +504,14 @@ export function StickyNavbar() {
                         </div>
 
                     </div>
-                    {/* 
-                    <div className="">
-                        <IconButton
-                            size="sm"
-                            color="white"
-                            variant="text"
-                            className="ml-auto"
-                        >
-                            <PlusIcon className="h-5 w-5" />
-                        </IconButton>
-                        <Typography
-                            as="a"
-                            href="#"
-                            className="cursor-pointer py-1.5 font-medium"
-                        >
-                            Login
-                        </Typography>
-                        <Typography
-                            as="a"
-                            href="#"
-                            className="cursor-pointer py-1.5 font-medium"
-                        >
-                            Join TMDB
-                        </Typography>
-                        <IconButton
-                            size="sm"
-                            color="white"
-                            variant="text"
-                            className="ml-auto"
-                        >
-                            <MagnifyingGlassIcon className="h-5 w-5" />
-                        </IconButton>
-                    </div> */}
-                    <ProfileMenu />
+                    {/* <ProfileMenu /> */}
+                    <Typography
+                        as="a"
+                        href="/signin"
+                        className="cursor-pointer py-1.5 mr-4 lg:mr-1 font-medium"
+                    >
+                        Login
+                    </Typography>
                 </div>
                 <MobileNav open={isNavOpen} className="overflow-scroll">
                     <NavList />

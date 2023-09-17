@@ -4,7 +4,7 @@ import { StickyNavbar } from './components/StickyNavbar';
 import { FooterWithSocialLinks } from './components/FooterWithSocialLinks';
 import PopularMovies from './pages/PopularMovies';
 import Read from './pages/read';
-import { Route, Routes, } from 'react-router';
+import { Outlet, Route, Routes, } from 'react-router';
 import NowPlaying from './pages/NowPlaying';
 import Upcoming from './pages/Upcoming';
 import TopRated from './pages/TopRated';
@@ -24,39 +24,50 @@ import DetialPeople from './pages/DetialPeople';
 function App() {
   return (
     <>
-      <StickyNavbar />
+
       <Routes>
-        <Route path='/' element={<Home />} />
 
-        <Route path='/read/:id' element={<Read />} />
-        <Route path='/popular' element={<PopularMovies />} />
-        <Route path='/now playing' element={<NowPlaying />} />
-        <Route path='/upcoming' element={<Upcoming />} />
-        <Route path='/top rated' element={<TopRated />} />
+        <Route path='/' element={<MainLayout />}>
+          <Route path='/' element={<Home />} />
+          <Route path='/read/:id' element={<Read />} />
+          <Route path='/popular' element={<PopularMovies />} />
+          <Route path='/now playing' element={<NowPlaying />} />
+          <Route path='/upcoming' element={<Upcoming />} />
+          <Route path='/top rated' element={<TopRated />} />
 
-        <Route path='/airing Today' element={<AiringToday />} />
-        <Route path='/on tv' element={<OnTV />} />
+          <Route path='/airing Today' element={<AiringToday />} />
+          <Route path='/on tv' element={<OnTV />} />
+          <Route path='/discussions' element={<Discussion />} />
+          <Route path='/support' element={<Support />} />
+          <Route path='/leaderboard' element={<LeaderBoard />} />
+          <Route path='/api' element={<API />} />
 
-        <Route path='/popular people' element={<PopularPeople />} />
-        <Route path='/sign in' element={<SignIn />} />
-        <Route path='/sign out' element={<SignUp />} />
-        <Route path='/discussions' element={<Discussion />} />
-        <Route path='/support' element={<Support />} />
-        <Route path='/leaderboard' element={<LeaderBoard />} />
-        <Route path='/api' element={<API />} />
+          <Route path='/my profile' element={<MyProfile />} />
+          <Route path='/edit profile' element={<Notfound />} />
+          <Route path='/help' element={<Notfound />} />
+          <Route path='/inbox' element={<Notfound />} />
+          <Route path='/help' element={<Notfound />} />
 
-        <Route path='/my profile' element={<MyProfile />} />
-        <Route path='/edit profile' element={<Notfound />} />
-        <Route path='/help' element={<Notfound />} />
-        <Route path='/inbox' element={<Notfound />} />
-        <Route path='/help' element={<Notfound />} />
-
-        <Route path='/detail_people/:id' element={<DetialPeople />} />
+          <Route path='/detail_people/:id' element={<DetialPeople />} />
+          <Route path='/popular people' element={<PopularPeople />} />
+        </Route>
+        <Route path='/*' element={<Notfound />} />
+        <Route path='/signin' element={<SignIn />} />
+        <Route path='/register' element={<SignUp />} />
       </Routes>
 
-      <FooterWithSocialLinks />
+
     </>
   );
 }
 
 export default App;
+function MainLayout() {
+  return (
+    <>
+      <StickyNavbar />
+      <Outlet />
+      <FooterWithSocialLinks />
+    </>
+  )
+}
