@@ -3,55 +3,15 @@ import CardPeople from '../components/Cards/CardPeople';
 import { Link } from 'react-router-dom';
 import { Base_Url } from '../utilities/API/BaseURl';
 import { api_key } from '../utilities/API/Key';
+import { useDispatch, useSelector } from 'react-redux';
+import { fectch_all_people } from '../redux/actions/PeopleActions';
 
 const PopularPeople = () => {
-    const [people, setpeople] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(0);
-
+    const dispactch = useDispatch();
+    const { people } = useSelector(state => state.peopleReducer);
     useEffect(() => {
-        // Fetch the movie data
-        const fetchpeople = async () => {
-            try {
-                const response = await fetch(
-                    `${Base_Url}/person/popular?api_key=${api_key}&language=en-US&page=${currentPage}`
-                );
-                const data = await response.json();
-                setpeople((prevpeople) => [...prevpeople, ...data.results]);
-                setTotalPages(data.total_pages);
-            } catch (error) {
-                console.error("Error fetching movie data:", error);
-            }
-        };
-        if (currentPage === 1) {
-            setpeople([]);
-        }
-        fetchpeople();
-    }, [currentPage]);
-    console.log("people", people);
-    const handleScroll = () => {
-        if (
-            window.innerHeight + document.documentElement.scrollTop ===
-            document.documentElement.offsetHeight
-        ) {
-            if (currentPage < totalPages) {
-                setCurrentPage((prevPage) => prevPage + 1);
-            }
-        }
-    };
-    //const overviews = people && people.results.known_for.map(o => o.overview);
-    useEffect(() => {
-        window.addEventListener("scroll", handleScroll);
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    }, []);
-
-    const handleViewMore = () => {
-        setCurrentPage((prevPage) => prevPage + 1);
-    };
-    /* const allOverviews = people && people.results[0].known_for.map(item => item.overview); */
-    //const allOverviews = people && people.results && people.results[0] && people.results[0].known_for.map(item => item.overview);
+        dispactch(fectch_all_people());
+    }, [])
     return (
         <main className="container mx-auto mt-5">
             <h2 className="flex items-center justify-center text-2xl font-bold text-white">
@@ -62,7 +22,7 @@ const PopularPeople = () => {
                     class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 xxl:grid-cols-8 sm:gap-5 gap-4 px-4 sm:px-0"
                 >
                     {people &&
-                        people.map((person, index) => (
+                        people.results.map((person, index) => (
                             <div class="inline-block justify-center items-center" key={index}>
                                 <Link to={`/detail_people/${person.id}`}>
                                     <CardPeople
@@ -77,7 +37,7 @@ const PopularPeople = () => {
                 </div>
             </div>
 
-            <div className="fter:h-px my-24 flex items-center before:h-px before:flex-1  before:bg-gray-300 before:content-[''] after:h-px after:flex-1 after:bg-gray-300  after:content-['']">
+            {/* <div className="fter:h-px my-24 flex items-center before:h-px before:flex-1  before:bg-gray-300 before:content-[''] after:h-px after:flex-1 after:bg-gray-300  after:content-['']">
                 {currentPage < totalPages ? (
                     <button
                         type="button"
@@ -99,7 +59,7 @@ const PopularPeople = () => {
                         View More
                     </button>
                 ) : null}
-            </div>
+            </div> */}
         </main>
     );
 }

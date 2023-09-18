@@ -61,7 +61,7 @@ const PopularMovies = () => {
                 >
                     {movies &&
                         movies.map((movie, index) => (
-                            <div class="inline-block justify-center items-center" key={index}>
+                            <div class="inline-block justify-center items-center duration-500 hover:scale-105 hover:shadow-xl" key={index}>
                                 <Link to={`/read/${movie.id}`}>
                                     <CardMovie
                                         poster_path={movie.poster_path}
