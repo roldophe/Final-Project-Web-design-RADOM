@@ -1,47 +1,34 @@
-import React, { useEffect, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React, { useEffect} from 'react';
 import CardSlide from './Cards/CardSlide';
-import { Base_Url } from '../utilities/API/BaseURl';
-import { api_key } from '../utilities/API/Key';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { fectchAllMovies } from '../redux/actions/MovieActions';
 const SliderPopulars = () => {
-    const [movies, setMovie] = useState(null);
-
+    const dispatch = useDispatch();
+    const { movies } = useSelector(state => state.movReducer);
     useEffect(() => {
-        // Fetch the movie data
-        const fetchMovie = async () => {
-            try {
-                const response = await fetch(`${Base_Url}/movie/popular?api_key=${api_key}&language=en-US&page=1`);
-                const data = await response.json();
-                setMovie(data);
-            } catch (error) {
-                console.error("Error fetching movie data:", error);
-            }
-        };
-
-        fetchMovie();
-    }, []);
+        dispatch(fectchAllMovies())
+    }, [])
+    console.log("Movie action: ", movies)
     return (
-        <div class="flex flex-col m-auto p-auto mt-3 hover:-mt-10">
+        <div class="flex flex-col m-auto p-auto pb-10 bg-no-repeat bg-[center_top_8rem] bg-[url(https://www.themoviedb.org/assets/2/v4/misc/trending-bg-39afc2a5f77e31d469b25c187814c0a2efef225494c038098d62317d923f8415.svg)]">
             <div
-                class="flex overflow-x-scroll pb-10 hide-scroll-bar px-3"
+                class="flex overflow-x-scroll hide-scroll-bar px-3"
             >
                 <div
-                    class="flex flex-nowrap hover:mt-12"
+                    class="flex flex-nowrap mt-3"
                 >
                     {
-                        movies && movies.results.map((movie) => (
-                            <div class="inline-block pl-3 hover:scale-105 duration-75 hover:-translate-y-10 hover:mt-10  hover:inset-0">
+                        movies && movies.results && movies.results.map((movie) => (
+                            <div class="inline-block pl-3 duration-500 hover:scale-105 hover:shadow-xl">
                                 <a href={`/read/${movie.id}`} a>
-                                    
-                                    <CardSlide 
+
+                                    <CardSlide
                                         poster_path={movie.poster_path}
                                         title={movie.title}
                                         release_date={movie.release_date}
                                         vote_average={movie.vote_average}
                                     />
                                 </a>
-
                             </div>
                         ))
                     }

@@ -13,7 +13,7 @@ const Home = () => {
                 {/* Trending Section Start */}
                 <section>
                     {/* Heading */}
-                    <div className="flex items-center justify-between px-5 py-3 mt-5 rounded-none relative transform z-30">
+                    <div className="flex items-center justify-between px-5 py-3 mt-5 rounded-none ">
                         <h2 className="text-2xl font-bold text-white ">
                             Trending
                         </h2>
@@ -37,8 +37,8 @@ const Home = () => {
                 {/* Popular Section Start */}
                 <section>
                     {/* Heading */}
-                    <div className="flex items-center text-white justify-between px-5 py-3 mt-5 rounded-none">
-                        <h2 className="text-2xl font-bold">
+                    <div className="flex items-center justify-between px-5 py-3 mt-5 rounded-none">
+                        <h2 className="text-2xl font-bold text-white">
                             Popular Movies
                         </h2>
                     </div>
