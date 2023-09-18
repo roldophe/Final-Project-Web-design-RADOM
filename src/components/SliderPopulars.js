@@ -10,9 +10,9 @@ const SliderPopulars = () => {
     }, [])
     console.log("Movie action: ", movies)
     return (
-        <div class="flex flex-col m-auto p-auto pb-10 bg-no-repeat bg-[center_top_8rem] bg-[url(https://www.themoviedb.org/assets/2/v4/misc/trending-bg-39afc2a5f77e31d469b25c187814c0a2efef225494c038098d62317d923f8415.svg)]">
+        <div class="flex flex-col m-auto bg-no-repeat bg-[center_top_8rem] bg-[url(https://www.themoviedb.org/assets/2/v4/misc/trending-bg-39afc2a5f77e31d469b25c187814c0a2efef225494c038098d62317d923f8415.svg)]">
             <div
-                class="flex overflow-x-scroll hide-scroll-bar px-3"
+                class="flex overflow-x-scroll pb-10 hide-scroll-bar px-3"
             >
                 <div
                     class="flex flex-nowrap mt-3"
