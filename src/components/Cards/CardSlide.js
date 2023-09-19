@@ -39,8 +39,8 @@ const CardSlide = (props) => {
                     </div>
                 </Tooltip>
             </div>
-            <h6 class="mt-4 text-gray-300 font-bold cursor-pointer px-3 text-lg">{props.title}</h6>
-            <div class="px-3">
+            <h6 class="mt-2 text-gray-300 font-bold cursor-pointer px-3 text-lg">{props.title && props.title.length > 16 ? props.title.substring(0, 15) + "..." : props.title}</h6>
+            <div class="px-3 pb-2">
                 <div class="flex space-x-1 items-center">
                     <p className='text-gray-400 text-xl md:text-xl'>{props.release_date}</p>
                 </div>

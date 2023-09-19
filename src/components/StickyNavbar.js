@@ -488,7 +488,7 @@ export function StickyNavbar() {
                             color="white"
                             variant="text"
                             onClick={toggleIsNavOpen}
-                            className="ml-2 sm:-ml-2 lg:hidden"
+                            className=" sm:-ml-2 lg:hidden"
                         >
                             <Bars3Icon className="h-6 w-6" />
                         </IconButton>

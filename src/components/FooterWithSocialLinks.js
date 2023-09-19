@@ -25,7 +25,7 @@ export function FooterWithSocialLinks() {
                 background: "linear-gradient(#2b4a62, #0d1423)"
             }}
         >
-            <div className="mx-auto w-full max-w-7xl px-8">
+            <div className="mx-auto w-full max-w-7xl sm:px-8 px-5">
                 <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2">
                     <Typography variant="h5" className="my-6" color="white">
                         ISTAD MOVIE
