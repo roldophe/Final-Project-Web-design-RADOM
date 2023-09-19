@@ -60,17 +60,13 @@ const TopRated = () => {
                     class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xxl:grid-cols-6 sm:gap-5 gap-4 px-4 sm:px-0"
                 >
                     {movies &&
-                        movies.map((movie, index) => (
-                            <div class="inline-block justify-center items-center duration-500 hover:scale-105 hover:shadow-xl" key={index}>
-                                <Link to={`/read/${movie.id}`}>
-                                <CardMovie
-                                        poster_path={movie.poster_path}
-                                        title={movie.title}
-                                        release_date={movie.release_date}
-                                    />
-                                </Link>
-
-                            </div>
+                        movies.map((movie) => (<Link to={`/read/${movie.id}`}>
+                            <CardMovie
+                                poster_path={movie.poster_path}
+                                title={movie.title}
+                                release_date={movie.release_date}
+                            />
+                        </Link>
                         ))}
                 </div>
             </div>

@@ -61,17 +61,13 @@ const Upcoming = () => {
                     >
                         {movies &&
                             movies.map((movie, index) => (
-
-                                <div class="inline-block justify-center items-center duration-500 hover:scale-105 hover:shadow-xl" key={index}>
-                                    <Link to={`/read/${movie.id}`}>
+                                <Link to={`/read/${movie.id}`}>
                                     <CardMovie
                                         poster_path={movie.poster_path}
                                         title={movie.title}
                                         release_date={movie.release_date}
                                     />
-                                    </Link>
-
-                                </div>
+                                </Link>
                             ))}
                     </div>
                 </div>

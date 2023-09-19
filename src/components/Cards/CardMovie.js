@@ -3,9 +3,9 @@ import { BaseUrl_Img } from '../../utilities/API/BaseImage';
 
 const CardMovie = (props) => {
   return (
-    <>
+    <div class="inline-block justify-center items-center duration-500 hover:scale-105 p-4 md:p-1">
       <div
-        class="overflow-hidden sm:rounded-lg rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+        class="overflow-hidden sm:rounded-lg rounded-lg shadow-md hover:shadow-xl transition-shadow duration-700"
       >
         <img
           class="sm:w-auto w-full h-auto sm:h-full "
@@ -23,7 +23,8 @@ const CardMovie = (props) => {
           </p>
         </div>
       </div>
-    </>
+    </div>
+
   );
 }
 

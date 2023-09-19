@@ -5,7 +5,7 @@ const CardPeople = (person) => {
     return (
         <>
             <div
-                class="overflow-hidden sm:rounded-lg rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+                class="overflow-hidden sm:rounded-lg rounded-lg shadow-md hover:shadow-xl duration-500 hover:scale-105"
             >
                 <img
                     class="sm:w-auto w-full h-auto sm:h-full"

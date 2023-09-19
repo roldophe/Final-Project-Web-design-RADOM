@@ -488,14 +488,14 @@ export function StickyNavbar() {
                             color="white"
                             variant="text"
                             onClick={toggleIsNavOpen}
-                            className="mr-auto -ml-1 lg:hidden"
+                            className="ml-2 sm:-ml-2 lg:hidden"
                         >
                             <Bars3Icon className="h-6 w-6" />
                         </IconButton>
                         <Typography
                             as="a"
                             href="/"
-                            className="cursor-pointer py-1.5 ml-2 lg:-ml-1 font-medium"
+                            className="cursor-pointer py-1.5 ml-0 lg:-ml-1 font-medium"
                         >
                             ISTAD MOVIE
                         </Typography>
@@ -508,7 +508,7 @@ export function StickyNavbar() {
                     <Typography
                         as="a"
                         href="/signin"
-                        className="cursor-pointer py-1.5 mr-4 lg:mr-1 font-medium"
+                        className="cursor-pointer py-1.5 mr-3 lg:mr-1 font-medium"
                     >
                         Login
                     </Typography>

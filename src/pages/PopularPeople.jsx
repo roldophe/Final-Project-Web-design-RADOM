@@ -1,17 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import CardPeople from '../components/Cards/CardPeople';
 import { Link } from 'react-router-dom';
-import { Base_Url } from '../utilities/API/BaseURl';
-import { api_key } from '../utilities/API/Key';
 import { useDispatch, useSelector } from 'react-redux';
-import { fectch_all_people } from '../redux/actions/PeopleActions';
+import { fectch_people } from '../redux/actions/PeopleActions';
 
 const PopularPeople = () => {
-    const dispactch = useDispatch();
-    const { people } = useSelector(state => state.peopleReducer);
+    const dispatch = useDispatch();
+    const { people, currentPage, totalPages } = useSelector(state => state.peopleReducer);
+    const [isLoading, setIsLoading] = useState(false);
+
     useEffect(() => {
-        dispactch(fectch_all_people());
-    }, [])
+        dispatch(fectch_people(currentPage));
+    }, [dispatch, currentPage]);
+
+    const handleViewMore = () => {
+        if (currentPage < totalPages) {
+            setIsLoading(true);
+            dispatch(fectch_people(currentPage + 1));
+            setIsLoading(false);
+        }
+    };
+    console.log("fetch people...",people);
     return (
         <main className="container mx-auto mt-5">
             <h2 className="flex items-center justify-center text-2xl font-bold text-white">
@@ -22,7 +31,7 @@ const PopularPeople = () => {
                     class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 xxl:grid-cols-8 sm:gap-5 gap-4 px-4 sm:px-0"
                 >
                     {people &&
-                        people.results.map((person, index) => (
+                        people.map((person, index) => (
                             <div class="inline-block justify-center items-center" key={index}>
                                 <Link to={`/detail_people/${person.id}`}>
                                     <CardPeople
@@ -37,7 +46,7 @@ const PopularPeople = () => {
                 </div>
             </div>
 
-            {/* <div className="fter:h-px my-24 flex items-center before:h-px before:flex-1  before:bg-gray-300 before:content-[''] after:h-px after:flex-1 after:bg-gray-300  after:content-['']">
+            <div className="fter:h-px my-24 flex items-center before:h-px before:flex-1  before:bg-gray-300 before:content-[''] after:h-px after:flex-1 after:bg-gray-300  after:content-['']">
                 {currentPage < totalPages ? (
                     <button
                         type="button"
@@ -59,7 +68,7 @@ const PopularPeople = () => {
                         View More
                     </button>
                 ) : null}
-            </div> */}
+            </div>
         </main>
     );
 }
