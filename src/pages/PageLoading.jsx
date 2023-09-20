@@ -28,9 +28,13 @@ const PageLoading = () => {
                 lottieRef={prodRef}
                 loop={false}
                 animationData={animationData}
-                
+
             />
         </div>
+        // <div className="flex items-center justify-center mt-10">
+        //     <div className="animate-spin rounded-full h-14 w-14 border-t-4 border-b-4 border-purple-500"></div>
+        //     <span className="ml-2 text-gray-600">Loading...</span>
+        // </div>
     );
 }
 
