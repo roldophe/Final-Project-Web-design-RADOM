@@ -17,7 +17,7 @@ import {
     Bars3Icon,
 } from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router";
-import { FaRegAddressCard } from "react-icons/fa";
+import { FaAngleDoubleDown, FaRegAddressCard } from "react-icons/fa";
 
 const navMovieMenuItems = [
     {
@@ -259,14 +259,20 @@ function NavList() {
             <NavMoviesMenu />
             <NavTvShowMenu />
             <NavPeopleMenu />
-            <FaRegAddressCard className="h-[18px] w-[18px]" />
-            <Typography
-                as="a"
-                href="/about"
-                className="cursor-pointer py-1.5 ml-0 lg:-ml-1 font-medium"
-            >
-                About
-            </Typography>
+            <div className="flex pl-3 md:p-0 ">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="h-5 w-5 mr-2 mt-1" >
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+
+                <Typography
+                    as="a"
+                    href="/about"
+                    variant="h6" color="white"
+                // className="mb-"
+                >
+                    About
+                </Typography>
+            </div>
         </ul>
     );
 }
