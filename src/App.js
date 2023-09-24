@@ -12,14 +12,11 @@ import AiringToday from './pages/AiringToday';
 import OnTV from './pages/OnTV';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
-import Discussion from './pages/Discussion';
-import Support from './pages/Support';
-import API from './pages/API';
-import LeaderBoard from './pages/LeaderBoard';
 import MyProfile from './pages/MyProfile';
 import PopularPeople from './pages/PopularPeople';
 import Notfound from './pages/404';
 import DetialPeople from './pages/DetialPeople';
+import About from './pages/About';
 
 function App() {
   return (
@@ -37,10 +34,7 @@ function App() {
 
           <Route path='/airing Today' element={<AiringToday />} />
           <Route path='/on tv' element={<OnTV />} />
-          <Route path='/discussions' element={<Discussion />} />
-          <Route path='/support' element={<Support />} />
-          <Route path='/leaderboard' element={<LeaderBoard />} />
-          <Route path='/api' element={<API />} />
+          <Route path='/about' element={<About />} />
 
           <Route path='/my profile' element={<MyProfile />} />
           <Route path='/edit profile' element={<Notfound />} />

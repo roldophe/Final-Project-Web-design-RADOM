@@ -3,123 +3,22 @@ import {
     Navbar,
     MobileNav,
     Typography,
-    Button,
     Menu,
     MenuHandler,
     MenuList,
     MenuItem,
-    Avatar,
     IconButton,
 } from "@material-tailwind/react";
 import {
-    UserCircleIcon,
     ChevronDownIcon,
-    Cog6ToothIcon,
-    InboxArrowDownIcon,
-    LifebuoyIcon,
-    PowerIcon,
     FilmIcon,
     TvIcon,
     UsersIcon,
-    EllipsisVerticalIcon,
     Bars3Icon,
 } from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router";
-// profile menu component
-const profileMenuItems = [
-    {
-        label: "My Profile",
-        icon: UserCircleIcon,
-    },
-    {
-        label: "Edit Profile",
-        icon: Cog6ToothIcon,
-    },
-    {
-        label: "Inbox",
-        icon: InboxArrowDownIcon,
-    },
-    {
-        label: "Help",
-        icon: LifebuoyIcon,
-    },
-    {
-        label: "Sign In",
-        icon: PowerIcon,
-    },
-];
+import { FaRegAddressCard } from "react-icons/fa";
 
-function ProfileMenu() {
-    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
-    const closeMenu = () => setIsMenuOpen(false);
-    const navigate = useNavigate();
-
-    const handleItemClick = (route) => {
-        navigate(route);
-        setIsMenuOpen(false); // Close the menu after navigation
-    };
-
-    return (
-        <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
-
-            <MenuHandler>
-                <Button
-                    variant="text"
-                    color="white"
-                    className="flex items-center gap-1 rounded-full py-0.5 pr-2 pl-0.5 lg:ml-auto"
-                >
-                    <Avatar
-                        variant="circular"
-                        size="sm"
-                        alt="tania andrew"
-                        className="border border-gray-100 p-0.5"
-                        src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
-                    />
-                    <ChevronDownIcon
-                        strokeWidth={2.5}
-                        className={`h-3 w-3 transition-transform ${isMenuOpen ? "rotate-180" : ""
-                            }`}
-                    />
-                </Button>
-
-            </MenuHandler>
-
-            <MenuList className="p-1">
-
-                {profileMenuItems.map(({ label, icon }, key) => {
-                    const isLastItem = key === profileMenuItems.length - 1;
-
-                    return (
-                        <MenuItem
-                            key={label}
-                            onClick={closeMenu}
-                            className={`flex items-center gap-2 rounded ${isLastItem
-                                ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
-                                : ""
-                                }`}
-
-                        >
-                            {React.createElement(icon, {
-                                className: `h-4 w-4 ${isLastItem ? "text-red-500" : ""}`,
-                                strokeWidth: 2,
-                            })}
-                            <Typography
-                                as="span"
-                                variant="small"
-                                className="font-normal"
-                                color={isLastItem ? "red" : "inherit"}
-                                key={label} onClick={() => handleItemClick(`/${label.toLowerCase()}`)}
-                            >
-                                {label}
-                            </Typography>
-                        </MenuItem>
-                    );
-                })}
-            </MenuList>
-        </Menu>
-    );
-}
 const navMovieMenuItems = [
     {
         title: "Popular",
@@ -151,20 +50,6 @@ const navTvShowItems = [
 const navPeopleItems = [
     {
         title: "Popular People",
-    },
-];
-const navMoreItems = [
-    {
-        title: "Discussions",
-    },
-    {
-        title: "Leaderboard",
-    },
-    {
-        title: "Support",
-    },
-    {
-        title: "API",
     },
 ];
 function NavMoviesMenu() {
@@ -366,88 +251,7 @@ function NavPeopleMenu() {
         </React.Fragment>
     );
 }
-function NavMoreMenu() {
-    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-    const navigate = useNavigate();
 
-    const handleItemClick = (route) => {
-        navigate(route);
-        setIsMenuOpen(false); // Close the menu after navigation
-    };
-    const renderItems = navMoreItems.map(({ title }) => (
-        <Typography key={title} onClick={() => handleItemClick(`/${title.toLowerCase()}`)}>
-            <MenuItem>
-                <Typography variant="small" color="gray" className="font-normal">
-                    {title}
-                </Typography>
-            </MenuItem>
-        </Typography>
-    ));
-
-    return (
-        <React.Fragment>
-            <Menu allowHover open={isMenuOpen} handler={setIsMenuOpen}>
-                <MenuHandler>
-                    <Typography as="a" href="#" variant="small" className="font-normal">
-                        <MenuItem className="hidden items-center gap-2 text-gray-100 lg:flex lg:rounded-full">
-                            <EllipsisVerticalIcon className="h-[18px] w-[18px]" />
-                            <Typography variant="h6" color="white" className="mb-1">
-                                More
-                            </Typography>
-                            <ChevronDownIcon
-                                strokeWidth={2}
-                                className={`h-3 w-3 transition-transform ${isMenuOpen ? "rotate-180" : ""
-                                    }`}
-                            />
-                        </MenuItem>
-                    </Typography>
-                </MenuHandler>
-                <MenuList className="hidden overflow-visible lg:grid ">
-                    <ul>
-                        {renderItems}
-                    </ul>
-                </MenuList>
-            </Menu>
-            <Menu allowHover open={isMenuOpen} handler={setIsMenuOpen}>
-                <MenuHandler>
-                    <MenuItem className="flex items-center gap-2 text-gray-100 lg:hidden">
-
-                        <EllipsisVerticalIcon className="h-[18px] w-[18px]" />
-                        <Typography variant="h6" color="white" className="mb-1">
-                            More
-                        </Typography>
-                        <ChevronDownIcon
-                            strokeWidth={2}
-                            className={`h-3 w-3 transition-transform ${isMenuOpen ? "rotate-180" : ""
-                                }`}
-                        />
-                    </MenuItem>
-                </MenuHandler>
-                <MenuList className="overflow-visible lg:hidden sm:-ml-32 md:-ml-36">
-                    <ul className="flex w-full flex-col lg:hidden">
-                        {renderItems}
-                    </ul>
-                </MenuList>
-            </Menu>
-        </React.Fragment>
-    );
-}
-// nav list component
-const navListItems = [
-    {
-        label: "TV Shows",
-        icon: TvIcon,
-    },
-    {
-        label: "People",
-        icon: UsersIcon,
-    },
-    {
-        label: "More",
-        icon: EllipsisVerticalIcon,
-    },
-
-];
 
 function NavList() {
     return (
@@ -455,7 +259,14 @@ function NavList() {
             <NavMoviesMenu />
             <NavTvShowMenu />
             <NavPeopleMenu />
-            <NavMoreMenu />
+            <FaRegAddressCard className="h-[18px] w-[18px]" />
+            <Typography
+                as="a"
+                href="/about"
+                className="cursor-pointer py-1.5 ml-0 lg:-ml-1 font-medium"
+            >
+                About
+            </Typography>
         </ul>
     );
 }
@@ -504,7 +315,6 @@ export function StickyNavbar() {
                         </div>
 
                     </div>
-                    {/* <ProfileMenu /> */}
                     <Typography
                         as="a"
                         href="/signin"

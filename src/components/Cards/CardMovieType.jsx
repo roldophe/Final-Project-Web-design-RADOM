@@ -5,7 +5,7 @@ import CardMovie from './CardMovie';
 import { fectchAllMovies } from '../../redux/actions/MovieActions';
 import PageLoading from '../../pages/PageLoading';
 
-const CardMovieType = ({ movieType ,Title}) => {
+const CardMovieType = ({ movieType, Title }) => {
     const dispatch = useDispatch();
     const { movies, currentPage, totalPages } = useSelector(state => state.movReducer);
     const [isLoading, setIsLoading] = useState(true);
@@ -34,8 +34,19 @@ const CardMovieType = ({ movieType ,Title}) => {
         <>
             {isLoading ? <PageLoading /> :
                 <div className="container mx-auto mt-5">
-                    <h2 className="flex items-center justify-center text-2xl font-bold text-white">
+                    {/* <h2 className="flex items-center justify-center text-2xl font-bold text-white">
                         {Title}
+                    </h2> */}
+                    {/* <h2 className="flex items-center justify-center text-3xl font-bold text-white tracking-wide">
+                        <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                            {Title}
+                        </span>
+                    </h2> */}
+                    
+                    <h2 className="flex items-center justify-center text-3xl font-bold italic text-white tracking-wide" style={{ letterSpacing: '-0.05em' }}>
+                        <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                            {Title}
+                        </span>
                     </h2>
                     <div className="flex items-center justify-center mt-3">
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xxl:grid-cols-6 sm:gap-5 gap-4 px-4 sm:px-0">

@@ -4,14 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fectch_all_trending } from '../redux/actions/TrendingAction';
 
 const SlideTrending = () => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch([]);
     const { movies } = useSelector(state => state.trendingReducer);
     useEffect(() => {
         dispatch(fectch_all_trending())
     }, [])
     console.log("Movie action: ", movies)
 
-    console.log('Movies', movies && movies.results);
+    console.log('Movies trending', movies && movies.results);
     return (
         <div class="flex flex-col m-auto bg-no-repeat bg-[center_top_8rem] 
         bg-[url(https://www.themoviedb.org/assets/2/v4/misc/trending-bg-39afc2a5f77e31d469b25c187814c0a2efef225494c038098d62317d923f8415.svg)]"
@@ -27,8 +27,8 @@ const SlideTrending = () => {
 
                                     <CardSlide
                                         poster_path={movie.poster_path}
-                                        title={movie.title}
-                                        release_date={movie.release_date}
+                                        title={movie.name || movie.title }
+                                        release_date={movie.release_date || movie.first_air_date}
                                         vote_average={movie.vote_average}
                                     />
                                 </a>
