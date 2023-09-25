@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import developer from '../assets/Lotties/animation_lmxso14m.json'
 import Lottie from 'lottie-react'
-import { useNavigate } from 'react-router'
 
 export default function About() {
     const prodRef = useRef(null);
@@ -38,8 +37,8 @@ export default function About() {
                         <div className='md:mt-10 mt-5 gap-2 flex md:pr-0 pl-5'>
                             
                             <a href="/"
-                                    class="text-gray-300 inline-block rounded-lg border-2 px-6 pb-[6px] pt-2 md:text-md text-xs font-medium uppercase leading-normal text-danger transition duration-150 ease-in-out hover:border-danger-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-danger-600 focus:border-danger-600 focus:text-danger-600 focus:outline-none focus:ring-0 active:border-danger-700 active:text-danger-700 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10
-                                    bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%
+                                    class="text-gray-300 inline-block rounded border-2 px-6 pb-[6px] pt-2 md:text-md text-xs font-medium uppercase leading-normal text-danger transition duration-150 ease-in-out hover:border-danger-600  hover:bg-opacity-10 hover:text-danger-600 focus:border-danger-600 focus:text-danger-600 focus:outline-none focus:ring-0 active:border-danger-700 active:text-danger-700 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10
+                                    bg-blue-700 hover:bg-blue-900
                                     "
                                     data-te-ripple-init
                                     data-te-ripple-color="light"
@@ -47,7 +46,7 @@ export default function About() {
                                     Getting Started
                                 </a>
                             <a href="/"
-                                class="text-gray-300 inline-block rounded-lg border-2 px-6 pb-[5px] pt-2 md:text-md text-xs font-medium uppercase leading-normal text-danger transition duration-150 ease-in-out hover:border-danger-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-danger-600 focus:border-danger-600 focus:text-danger-600 focus:outline-none focus:ring-0 active:border-danger-700 active:text-danger-700 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
+                                class="text-gray-300 inline-block rounded border-2 px-6 pb-[5px] pt-2 md:text-md text-xs font-medium uppercase leading-normal text-danger transition duration-150 ease-in-out hover:border-danger-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-danger-600 focus:border-danger-600 focus:text-danger-600 focus:outline-none focus:ring-0 active:border-danger-700 active:text-danger-700 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
                                 data-te-ripple-init
                                 data-te-ripple-color="light"
                             >
@@ -56,7 +55,7 @@ export default function About() {
                         </div>
                     </div>
                     <div class="sm:w-1/2 md:py-10 md:pl-10 p-5 md:p-0">
-                        <img src="https://img.freepik.com/free-photo/man-watching-streaming-service-his-tv_23-2149047410.jpg?w=1060&t=st=1695580847~exp=1695581447~hmac=753a339e7c753a4e8fd22d9e2bdf8427acd717129990afc2dfc166fb3f07b421" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy" />
+                        <img src="https://img.freepik.com/free-vector/dashboard-element-collection_23-2148394289.jpg?w=1060&t=st=1695623727~exp=1695624327~hmac=9099be4d9002d4f351def0d2eb2f7f2efe0863773725a4c2284a1853fa674965" />
                     </div>
                 </div>
             </section>
