@@ -35,11 +35,13 @@ const PopularPeople = () => {
 
     return (
         <>
-        {/* <PageLoading /> */}
+            {/* <PageLoading /> */}
             {isLoading ? <PageLoading /> :
                 <main className="container mx-auto mt-5">
-                    <h2 className="flex items-center justify-center text-2xl font-bold text-white">
-                        Popular People
+                    <h2 className="flex items-center justify-center text-3xl font-bold italic text-white tracking-wide" style={{ letterSpacing: '-0.05em' }}>
+                        <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                            Popular People
+                        </span>
                     </h2>
                     <div class="flex items-center justify-center mt-3">
                         <div
